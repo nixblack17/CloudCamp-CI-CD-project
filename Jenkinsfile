@@ -4,7 +4,7 @@ node("docker") {
     }
 
     stage("buildcontainer"){
-        sh "sudo docker build -t ghcr.io/nixblack17/cloudcamp-ci-cd-project/microService:0.0.1 ."
+        sh "sudo docker build -t ghcr.io/nixblack17/cloudcamp-ci-cd-project/microservice:0.0.1 ."
     }
 
     stage("login to ghcr"){
@@ -15,6 +15,6 @@ node("docker") {
     }  
 
     stage("push to registry"){
-        sh ("sudo docker push ghcr.io/nixblack17/cloudcamp-ci-cd-project/microService:0.0.1")
+        sh ("sudo docker push ghcr.io/nixblack17/cloudcamp-ci-cd-project/microservice:0.0.1")
     }
 }
