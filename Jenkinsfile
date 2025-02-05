@@ -19,7 +19,7 @@ node("docker") {
     }
 
     stage("buildcontainer"){
-        sh "docker build -t ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1"
+        sh "docker build -t ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1 ."
     }
 
     stage("login to ghcr"){
