@@ -19,17 +19,17 @@ node("docker") {
     }
 
     stage("buildcontainer"){
-        sh "docker build -t ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1 ."
+        sh "sudo docker build -t ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1 ."
     }
 
     stage("login to ghcr"){
         withCredentials([usernamePassword(credentialsId: 'github-container', passwordVariable: 'CR_PAT', usernameVariable: 'USERNAME')]) {
 
-            sh "echo $CR_PAT | docker login ghcr.io -u $USERNAME --password-stdin"
+            sh "echo $CR_PAT | sudo docker login ghcr.io -u $USERNAME --password-stdin"
         }
     }  
 
     stage("push to registry"){
-        sh ("docker push ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1")
+        sh ("sudo docker push ghcr.io/nixblack17/CloudCamp-CI-CD-project/microService:0.0.1")
     }
 }
